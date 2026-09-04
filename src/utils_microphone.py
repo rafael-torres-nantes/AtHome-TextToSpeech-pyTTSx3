@@ -3,18 +3,15 @@ import soundfile as sf
 from scipy.io.wavfile import write
 import os
 
-def record_audio(saveAudioOn=False, durantion=10 , audioName='audio_folder/input_audio.wav'):
-     
-    '''
-     Utilize o comando para acessar os microfones e os canais disponíveis:
-     ---------------------------------------------------------------------
-     python3 -m sounddevice
-     ---------------------------------------------------------------------
-     '''
+def record_audio(saveAudioOn=False, duration=10, audioName='audio_folder/input_audio.wav'):
+    """Grava áudio do microfone padrão e, opcionalmente, salva em arquivo WAV.
+
+    Utilize o comando para acessar os microfones e os canais disponíveis:
+    python3 -m sounddevice
+    """
 
     sample_frequence = 44100
     microfone_channel = 6
-    duration = durantion
 
     print("Aguarde !! Áudio está sendo gravado...")
     recording = sd.rec(int(duration * sample_frequence), samplerate=sample_frequence, channels=microfone_channel)
@@ -44,8 +41,3 @@ def deletar_arquivos(directoryName='audio_folder/'):
             os.remove(os.path.join(directoryName, file))
 
     print("Arquivos deletados com sucesso!")
-
-
-# saveAudioOn = True
-# record_audio(saveAudioOn)
-# reproduzir_audio()

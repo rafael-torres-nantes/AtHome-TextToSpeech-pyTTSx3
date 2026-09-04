@@ -2,8 +2,12 @@ import os
 import whisper
 
 def speechToText(audioName='input_audio.wav', directoryName='audio_folder/'):
-    # Obtém uma lista de todos os arquivos no diretório
+    """Transcreve um arquivo de áudio para texto usando o Whisper."""
+
     audioFile = os.path.join(directoryName, audioName)
+
+    if not os.path.isfile(audioFile):
+        raise FileNotFoundError(f"'{audioFile}' não encontrado. Grave o áudio antes de transcrever.")
    
     # Models
     # tiny - base - small - medium

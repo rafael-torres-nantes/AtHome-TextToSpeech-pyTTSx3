@@ -1,1 +1,3 @@
 audio_folder/*.wav
+__pycache__/
+*.pyc

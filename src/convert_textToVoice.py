@@ -1,20 +1,20 @@
 import pyttsx3
 
 def textToSpeech(textFile, audioSaveOn=False, audioName='output_audio.wav', audioReproduceOn=False, volume=0.5):
+    """Converte texto em fala, com opção de salvar em arquivo e/ou reproduzir na hora."""
 
     # Object creation
     reproducerText = pyttsx3.init()
-    volume = getVolume(reproducerText)
+    current_volume = getVolume(reproducerText)
 
     directory = 'audio_folder/'
     file_path = directory + audioName
 
-    if volume != 0.5:
+    if volume != current_volume:
         volumeChange(reproducerText, volume)
-        volume = getVolume(reproducerText)
-    
+
     if audioSaveOn == True:
-        saveAudio(reproducerText, textFile)
+        saveAudio(reproducerText, textFile, file_path)
 
     if audioReproduceOn == True:
         reproduceAudio(reproducerText, textFile)
